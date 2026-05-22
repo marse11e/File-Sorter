@@ -5,6 +5,7 @@
 Автор: github.com/marse11e
 """
 
+import os
 import sys
 from config import load_extensions
 
@@ -16,7 +17,8 @@ except ImportError:
 
 
 def main():
-    extensions = load_extensions("extensions.json")
+    base = os.path.dirname(os.path.abspath(__file__))
+    extensions = load_extensions(os.path.join(base, "extensions.json"))
     from gui.app import run_gui
     run_gui(extensions)
 
